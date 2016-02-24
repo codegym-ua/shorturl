@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="shortApp">
+<head>
+  <title>Short Url</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/html/bootstrap.min.css" type="text/css">
+  <script src="/html/angular.min.js"></script>
+  <script>
+    angular.module('shortApp', [])
+        .controller('UrlCtrl', function ($http, $scope) {
+          $scope.fullUrl = ''
+          $scope.shortUrl = '';
+          $scope.makeShort = function() {
+            if ($scope.fullUrl.length > 0){
+              $http.post('/api/v1/short', $scope.fullUrl)
+                  .success(function(data) {
+                    $scope.shortUrl = data;
+                  });
+            }
+          }
+        });
+  </script>
+</head>
+
+<body>
+<div class="row">
+
+  <div class="container" ng-controller="UrlCtrl">
+    <div class="col-md-12">
+      <div style="height: 200px"></div>
+
+      <div class="well">
+
+        <div class="col-md-10">
+          <input type="text"
+                 style="width: 100%"
+                 class="form-control"
+                 ng-model="fullUrl"
+                 placeholder="Full URL">
+        </div>
+
+        <div class="col-md-2">
+          <button type="submit" ng-click="makeShort()" class="btn btn-primary">Make it short!</button>
+        </div>
+        <div class="col-md-12">
+          {{shortUrl}}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</body>
+
+</html>

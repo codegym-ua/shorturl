@@ -1,0 +1,43 @@
+{
+
+  "database": {
+    "driverClass": "com.mysql.jdbc.Driver",
+    "user": "shorturl",
+    "password": "shorturl",
+    "url": "jdbc:mysql://localhost:3306/SHORTURL?useUnicode=true&characterEncoding=utf-8",
+    "properties": {
+      "hibernate.hbm2ddl.auto": "validate",
+      "hibernate.dialect": "org.hibernate.dialect.MySQLInnoDBDialect",
+      "hibernate.show_sql": "true",
+      "hibernate.format_sql": "true"
+    }
+  },
+  "server": {
+    "applicationConnectors": [
+      {
+        "type": "http",
+        "port": 8080
+      }
+    ],
+    "adminConnectors": [
+      {
+        "type": "http",
+        "port": 8081
+      }
+    ]
+  },
+
+  "logging": {
+    "level": "INFO",
+    "loggers": {
+      "io.dropwizard": "INFO",
+      "ua.codegym": "INFO"
+    },
+    "appenders": [
+      {
+        "type": "console",
+        "threshold": "INFO"
+      }
+    ]
+  }
+}
