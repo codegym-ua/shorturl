@@ -34,3 +34,6 @@
 5. В браузері ввести `http://localhost:8080`.
 
 Успіхів!
+
+PS. Література http://www.dropwizard.io/0.9.2/docs/manual/index.html
+http://n00tc0d3r.blogspot.nl/2013/09/big-data-tinyurl.html
